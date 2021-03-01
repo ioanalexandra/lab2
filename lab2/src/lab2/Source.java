@@ -1,8 +1,12 @@
 package lab2;
 
-public class Source {
-	private String name;
-	private SourceType type;
+/**
+ * 
+ * @author Alexandra
+ *
+ */
+public abstract class Source {
+	protected String name;
 
 	public String getName() {
 		return name;
@@ -12,18 +16,31 @@ public class Source {
 		this.name = name;
 	}
 
-	public SourceType getType() {
-		return type;
-	}
+	public abstract String getType();
 
-	public void setType(SourceType type) {
-		this.type = type;
-	}
-
+	/**
+	 * 
+	 * @return String
+	 *
+	 */
 	@Override
-	//metoda toString generata de IDE
+	// metoda toString generata de IDE
 	public String toString() {
-		return "Source [name=" + name + ", type=" + type + "]";
+		return "Source [name=" + name + ", type=" + getType() + "]";
+	}
+
+	/**
+	 * @return bool
+	 */
+	@Override
+	public boolean equals(Object obj) {
+		if (obj instanceof Source) {
+			if (((Source) obj).name.equals(this.name) && ((Source) obj).getType().equals(this.getType())) {
+				return true;
+			}
+			return false;
+		}
+		return false;
 	}
 
 }

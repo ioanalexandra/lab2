@@ -1,24 +1,26 @@
 package lab2;
 
+/**
+ * 
+ * @author Alexandra
+ *
+ */
 public class Main {
 	public static void main(String args[]) {
 		Problem pb = new Problem();
-		//declar componentele problemei
-		Source s1 = new Source();
+		// declar componentele problemei
+		Source s1 = new Factory();
 		s1.setName("S1");
-		s1.setType(SourceType.FACTORY);
-		Source s2 = new Source();
+		Source s2 = new Warehouse();
 		s2.setName("S2");
-		s2.setType(SourceType.WAREHOUSE);
-		Source s3 = new Source();
-		s3.setName("S3");
-		s3.setType(SourceType.WAREHOUSE);
+		Source s3 = new Warehouse();
+		s3.setName("S3");// incerc sa adaug mai multe surse cu acelasi nume si acelasi tip
 		Destination d1 = new Destination();
 		d1.setName("D1");
 		Destination d2 = new Destination();
 		d2.setName("D2");
 		Destination d3 = new Destination();
-		d3.setName("D3");
+		d3.setName("D3");// incerc sa adaug mai multe destinatii cu acelasi nume
 		pb.addSource(s1, 10);
 		pb.addSource(s2, 35);
 		pb.addSource(s3, 25);
@@ -34,8 +36,15 @@ public class Main {
 		pb.addCost(2, 0, 5);
 		pb.addCost(2, 1, 6);
 		pb.addCost(2, 2, 8);
-		//afisez problema
-		System.out.print(pb.toString());
-
+		// afisez problema
+		// System.out.print(pb.toString());
+		Solution s = new Solution(3, 3, pb);
+		//adaug manual o solutie si o afisez
+		s.addValue(0, 2, 10);
+		s.addValue(1, 1, 25);
+		s.addValue(1, 2, 10);
+		s.addValue(2, 0, 20);
+		s.addValue(2, 2, 5);
+		System.out.print(s.toString());
 	}
 }
